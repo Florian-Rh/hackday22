@@ -9,20 +9,78 @@ import Foundation
 
 
 internal class GameService {
-    internal func startNewGame() {
+    private static var host: String = "https://tik-tak-tioki.fly.dev"
+    private static func getURLRequest(
+        forEndpoint endpoint: String,
+        withHttpMethod httpMethod: String,
+        withQueryItems queryItems: [URLQueryItem] = []
+    ) -> URLRequest {
+        var urlComponents = URLComponents(string: "\(Self.host)/api/\(endpoint)")!
+        if !queryItems.isEmpty {
+            urlComponents.queryItems = queryItems
+        }
 
+        var urlRequest = URLRequest(url: urlComponents.url!)
+        urlRequest.httpMethod = httpMethod
+
+        return urlRequest
     }
 
-    internal func joinGame(named name: String) {
+    internal func startNewGame() async throws -> Game {
+        let urlRequest = Self.getURLRequest(forEndpoint: "game", withHttpMethod: "POST")
+        let (data, _) = try await URLSession.shared.data(for: urlRequest)
+        let game = try JSONDecoder.snakeCaseDecoder.decode(Game.self, from: data)
 
+        return game
     }
 
-    internal func loadGames() -> [String] {
-        []
+    internal func loadGames() async throws -> [GameListEntry] {
+        let urlRequest = Self.getURLRequest(forEndpoint: "join", withHttpMethod: "GET")
+        let (data, _) = try await URLSession.shared.data(for: urlRequest)
+        let games = try JSONDecoder.snakeCaseDecoder.decode([GameListEntry].self, from: data)
+
+        return games
     }
 
-    internal func makeMove(nextMoveToken: String, fieldIndex: Int) {
+    internal func joinGame(named name: String) async throws -> Game {
+        var urlRequest = Self.getURLRequest(forEndpoint: "join", withHttpMethod: "POST")
+        let joinRequest = JoinRequest(name: name)
+        urlRequest.httpBody = try JSONEncoder.snakeCaseEncoder.encode(joinRequest)
 
+        let (data, _) = try await URLSession.shared.data(for: urlRequest)
+        let game = try JSONDecoder.snakeCaseDecoder.decode(Game.self, from: data)
+
+        return game
+    }
+
+    internal func loadGame(forPlayerToken playerToken: String) async throws -> Game {
+        let urlRequest = Self.getURLRequest(
+            forEndpoint: "game",
+            withHttpMethod: "GET",
+            withQueryItems: [
+                .init(name: "player_token", value: playerToken)
+            ]
+        )
+        let (data, _) = try await URLSession.shared.data(for: urlRequest)
+        let game = try JSONDecoder.snakeCaseDecoder.decode(Game.self, from: data)
+
+        return game
+    }
+
+    internal func makeMove(playerToken: String, nextMove: Move) async throws -> Game {
+        var urlRequest = Self.getURLRequest(
+            forEndpoint: "move",
+            withHttpMethod: "POST",
+            withQueryItems: [
+                .init(name: "player_token", value: playerToken)
+            ]
+        )
+        urlRequest.httpBody = try JSONEncoder.snakeCaseEncoder.encode(nextMove)
+
+        let (data, _) = try await URLSession.shared.data(for: urlRequest)
+        let game = try JSONDecoder.snakeCaseDecoder.decode(Game.self, from: data)
+
+        return game
     }
 }
 
