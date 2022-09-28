@@ -17,6 +17,11 @@
 		BE59617A28E44E4C00A5F8A4 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE59617928E44E4C00A5F8A4 /* GameView.swift */; };
 		BE59617E28E44EEB00A5F8A4 /* GameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE59617D28E44EEB00A5F8A4 /* GameService.swift */; };
 		BE59618128E44EFC00A5F8A4 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE59618028E44EFC00A5F8A4 /* Game.swift */; };
+		BE7C412E28E48209002BB29A /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7C412D28E48209002BB29A /* GameViewModel.swift */; };
+		BE8D3E1128E457A900D81546 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8D3E1028E457A900D81546 /* Move.swift */; };
+		BE8D3E1328E457F600D81546 /* JoinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8D3E1228E457F600D81546 /* JoinRequest.swift */; };
+		BE8D3E1528E4582000D81546 /* GameListEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8D3E1428E4582000D81546 /* GameListEntry.swift */; };
+		BE8D3E1728E470AC00D81546 /* StartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8D3E1628E470AC00D81546 /* StartViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +79,11 @@
 		BE59617928E44E4C00A5F8A4 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		BE59617D28E44EEB00A5F8A4 /* GameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameService.swift; sourceTree = "<group>"; };
 		BE59618028E44EFC00A5F8A4 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		BE7C412D28E48209002BB29A /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		BE8D3E1028E457A900D81546 /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
+		BE8D3E1228E457F600D81546 /* JoinRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRequest.swift; sourceTree = "<group>"; };
+		BE8D3E1428E4582000D81546 /* GameListEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListEntry.swift; sourceTree = "<group>"; };
+		BE8D3E1628E470AC00D81546 /* StartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +150,9 @@
 			isa = PBXGroup;
 			children = (
 				BE59617728E44C8F00A5F8A4 /* StartView.swift */,
+				BE8D3E1628E470AC00D81546 /* StartViewModel.swift */,
 				BE59617928E44E4C00A5F8A4 /* GameView.swift */,
+				BE7C412D28E48209002BB29A /* GameViewModel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -157,6 +169,9 @@
 			isa = PBXGroup;
 			children = (
 				BE59618028E44EFC00A5F8A4 /* Game.swift */,
+				BE8D3E1028E457A900D81546 /* Move.swift */,
+				BE8D3E1228E457F600D81546 /* JoinRequest.swift */,
+				BE8D3E1428E4582000D81546 /* GameListEntry.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -290,8 +305,13 @@
 			files = (
 				BE14A5AF28E444FB009F6957 /* TicTacToeApp.swift in Sources */,
 				BE59618128E44EFC00A5F8A4 /* Game.swift in Sources */,
+				BE8D3E1328E457F600D81546 /* JoinRequest.swift in Sources */,
 				BE59617828E44C8F00A5F8A4 /* StartView.swift in Sources */,
+				BE8D3E1728E470AC00D81546 /* StartViewModel.swift in Sources */,
 				BE59617A28E44E4C00A5F8A4 /* GameView.swift in Sources */,
+				BE8D3E1128E457A900D81546 /* Move.swift in Sources */,
+				BE8D3E1528E4582000D81546 /* GameListEntry.swift in Sources */,
+				BE7C412E28E48209002BB29A /* GameViewModel.swift in Sources */,
 				BE59617E28E44EEB00A5F8A4 /* GameService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,6 +451,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TicTacToe WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = 63NZMDFF7Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TicTacToe WatchKit Extension/Info.plist";
@@ -451,7 +472,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
 		};
@@ -462,6 +483,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TicTacToe WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = 63NZMDFF7Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TicTacToe WatchKit Extension/Info.plist";
@@ -482,7 +504,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};
@@ -494,6 +516,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 63NZMDFF7Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = TicTacToe_WatchKit_Extension;
 				INFOPLIST_KEY_CFBundleDisplayName = "TicTacToe WatchKit App";
@@ -506,7 +529,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
 		};
@@ -518,6 +541,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 63NZMDFF7Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = TicTacToe_WatchKit_Extension;
 				INFOPLIST_KEY_CFBundleDisplayName = "TicTacToe WatchKit App";
@@ -530,7 +554,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};
@@ -539,6 +563,8 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 63NZMDFF7Z;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.rhein.TicTacToe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -551,6 +577,8 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 63NZMDFF7Z;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.rhein.TicTacToe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
