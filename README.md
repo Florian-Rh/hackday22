@@ -10,3 +10,13 @@ I also used it to test out SwiftUi, Combine and asnyc/await in Swift.
 
 <img width="362" alt="Bildschirmfoto 2022-09-29 um 16 16 08" src="https://user-images.githubusercontent.com/17906614/193055950-7ddd6963-8e09-47ce-bc6f-fa0c74a37f7d.png">
 <img width="362" alt="Bildschirmfoto 2022-09-29 um 16 20 17" src="https://user-images.githubusercontent.com/17906614/193057003-c2cca0c2-bef6-453e-a006-01bdcab8f233.png">
+
+
+### Requirements
+ * WatchOS 9.0
+ * iOS 16.0
+ * Xcode 14.0
+ * Swift 5.7
+ * MacOS 12.5
+
+... or higher
