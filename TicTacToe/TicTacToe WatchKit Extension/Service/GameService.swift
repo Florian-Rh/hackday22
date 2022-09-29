@@ -9,7 +9,7 @@ import Foundation
 
 
 internal class GameService {
-    private static var host: String = "https://tik-tak-tioki.fly.dev"
+    private static let host: String = "https://tik-tak-tioki.fly.dev"
 
     private static func getURLRequest(
         forEndpoint endpoint: String,
