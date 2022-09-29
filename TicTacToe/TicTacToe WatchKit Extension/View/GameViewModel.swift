@@ -10,20 +10,19 @@ import Foundation
 import SwiftUI
 
 @MainActor internal class GameViewModel: ObservableObject {
-    private let gameService = GameService()
-    private let playerToken: String
-    private var subscribers = Set<AnyCancellable>()
-    private var timer: Timer? = nil
-
-    @Published private var game: Game
     @Published internal private(set) var title: AttributedString = ""
     @Published internal private(set) var playerTag: AttributedString = ""
     @Published internal private(set) var formattedBoardValues: [String] = .init(repeating: "", count: 9)
     @Published internal private(set) var formattedGameState: String = ""
-    @Published internal private(set) var isGameOver: Bool = false
     @Published internal private(set) var formattedGameStateFontWeight: Font.Weight = .medium
     @Published internal private(set) var formattedGameStateFontColor: Color = .accentColor
+    @Published internal private(set) var isGameOver: Bool = false
 
+    private let gameService = GameService()
+    private let playerToken: String
+    private var timer: Timer? = nil
+    private var subscribers = Set<AnyCancellable>()
+    @Published private var game: Game
 
     internal init(game: Game) {
         self.game = game
@@ -85,9 +84,10 @@ import SwiftUI
     @objc
     private func updateGame() {
         Task {
-            // Use optional unwrap to ignore failed updates
-            if let game = try? await self.gameService.loadGame(forPlayerToken: self.playerToken) {
-                self.game = game
+            do {
+                self.game = try await self.gameService.loadGame(forPlayerToken: self.playerToken)
+            } catch let error {
+                print("An error occured while updating the game: \(error)")
             }
         }
     }

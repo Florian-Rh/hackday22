@@ -46,9 +46,9 @@ struct GameView_Previews: PreviewProvider {
                     name: "Game name",
                     state: .yourTurn,
                     board: [
-                        .free, .free, .free,
-                        .free, .free, .free,
-                        .free, .free, .free,
+                        .o, .x, .free,
+                        .x, .o, .free,
+                        .x, .o, .free,
                     ],
                     playerToken: "playerToken",
                     playerRole: .playerX,

@@ -8,9 +8,9 @@
 import Foundation
 
 @MainActor internal class StartViewModel: ObservableObject {
+    @Published internal var path: [Game] = []
     @Published internal private(set) var games: [GameListEntry] = []
     @Published internal private(set) var isLoading: Bool = false
-    @Published internal var path: [Game] = []
     
     private let gameService = GameService()
 
