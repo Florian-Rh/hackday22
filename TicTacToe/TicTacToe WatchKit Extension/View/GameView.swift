@@ -11,21 +11,23 @@ struct GameView: View {
     @StateObject internal var viewModel: GameViewModel
 
     var body: some View {
-        Text(self.viewModel.name)
-        Grid(alignment: .center, horizontalSpacing: 0.0, verticalSpacing: 0.0) {
-            ForEach(0...2, id: \.self) { row in
-                GridRow {
-                    ForEach(0...2, id: \.self) { column in
-                        let buttonIndex = column + row*3
-                        Button(self.viewModel.boardValues[buttonIndex]) {
-                            self.viewModel.makeMove(atIndex: buttonIndex)
+        ScrollView {
+            Text(self.viewModel.name)
+            Text(self.viewModel.gameState)
+            Grid(alignment: .center, horizontalSpacing: 1.0, verticalSpacing: 1.0) {
+                ForEach(0...2, id: \.self) { row in
+                    GridRow {
+                        ForEach(0...2, id: \.self) { column in
+                            let buttonIndex = column + row*3
+                            Button(self.viewModel.boardValues[buttonIndex]) {
+                                self.viewModel.makeMove(atIndex: buttonIndex)
+                            }
+                            .disabled(!self.viewModel.isButtonEnabled(forIndex: buttonIndex))
                         }
-                        .disabled(!self.viewModel.isButtonEnabled(forIndex: buttonIndex))
                     }
                 }
             }
         }
-        Text(self.viewModel.gameState)
     }
 }
 
