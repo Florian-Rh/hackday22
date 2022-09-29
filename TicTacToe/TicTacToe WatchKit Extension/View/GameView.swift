@@ -12,14 +12,21 @@ struct GameView: View {
 
     var body: some View {
         ScrollView {
-            Text(self.viewModel.name)
-            Text(self.viewModel.gameState)
+            Text(self.viewModel.title)
+            Text(self.viewModel.playerTag)
+                .padding(.bottom, 2.0)
+
+            Text(self.viewModel.formattedGameState)
+                .multilineTextAlignment(.center)
+                .fontWeight(self.viewModel.formattedGameStateFontWeight)
+                .foregroundColor(self.viewModel.formattedGameStateFontColor)
+
             Grid(alignment: .center, horizontalSpacing: 1.0, verticalSpacing: 1.0) {
                 ForEach(0...2, id: \.self) { row in
                     GridRow {
                         ForEach(0...2, id: \.self) { column in
                             let buttonIndex = column + row*3
-                            Button(self.viewModel.boardValues[buttonIndex]) {
+                            Button(self.viewModel.formattedBoardValues[buttonIndex]) {
                                 self.viewModel.makeMove(atIndex: buttonIndex)
                             }
                             .disabled(!self.viewModel.isButtonEnabled(forIndex: buttonIndex))
@@ -37,14 +44,14 @@ struct GameView_Previews: PreviewProvider {
             viewModel: .init(
                 game: .init(
                     name: "Game name",
-                    state: "your_turn",
+                    state: .yourTurn,
                     board: [
-                        "f", "f", "f",
-                        "f", "f", "f",
-                        "f", "f", "f",
+                        .free, .free, .free,
+                        .free, .free, .free,
+                        .free, .free, .free,
                     ],
                     playerToken: "playerToken",
-                    playerRole: "X",
+                    playerRole: .playerX,
                     nextMoveToken: "nextMoveToken"
                 )
             )

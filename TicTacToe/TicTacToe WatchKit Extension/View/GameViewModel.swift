@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import SwiftUI
 
 @MainActor internal class GameViewModel: ObservableObject {
     private let gameService = GameService()
@@ -15,10 +16,14 @@ import Foundation
     private var timer: Timer? = nil
 
     @Published private var game: Game
-    @Published internal private(set) var name: String = "unknown"
-    @Published internal private(set) var boardValues: [String] = .init(repeating: "", count: 9)
-    @Published internal private(set) var gameState: String = "" // TODO: should be formatted
-    @Published internal private(set) var isGameOver: Bool = false // TODO: should be set from the game state
+    @Published internal private(set) var title: AttributedString = ""
+    @Published internal private(set) var playerTag: AttributedString = ""
+    @Published internal private(set) var formattedBoardValues: [String] = .init(repeating: "", count: 9)
+    @Published internal private(set) var formattedGameState: String = ""
+    @Published internal private(set) var isGameOver: Bool = false
+    @Published internal private(set) var formattedGameStateFontWeight: Font.Weight = .medium
+    @Published internal private(set) var formattedGameStateFontColor: Color = .accentColor
+
 
     internal init(game: Game) {
         self.game = game
@@ -26,9 +31,13 @@ import Foundation
 
         self.$game
             .sink { [unowned self] newGame in
-                self.name = newGame.name
-                self.boardValues = newGame.board.map { $0.lowercased() == "f" ? "" : $0.uppercased() }
-                self.gameState = newGame.state
+                self.title = try! AttributedString(markdown: "Game: _\(newGame.name)_")
+                self.playerTag = try! AttributedString(markdown: "You are player **\(newGame.playerRole.rawValue.uppercased())**")
+                self.formattedBoardValues = newGame.board.map { $0 == .free ? "" : $0.rawValue.uppercased() }
+                self.formattedGameState = newGame.state.formattedState
+                self.isGameOver = newGame.state.isGameOver
+                self.formattedGameStateFontWeight = self.isGameOver ? .heavy : .medium
+                self.formattedGameStateFontColor = newGame.state.associatedColor
             }
             .store(in: &self.subscribers)
 
@@ -49,7 +58,7 @@ import Foundation
     internal func makeMove(atIndex index: Int) {
         Task {
             guard let nextMoveToken = self.game.nextMoveToken else {
-                fatalError("cannot make a move without a next move token")
+                fatalError("Cannot make a move without a next move token")
             }
             do {
                 self.game = try await self.gameService
@@ -68,18 +77,57 @@ import Foundation
     /// b) the designated field is free
     /// c) the game has a token for the next move
     internal func isButtonEnabled(forIndex index: Int) -> Bool {
-        self.game.state == "your_turn"
-        && self.game.board[index].lowercased() == "f"
+        self.game.state == .yourTurn
+        && self.game.board[index] == .free
         && self.game.nextMoveToken?.isEmpty == false
     }
 
     @objc
     private func updateGame() {
         Task {
-            // use optional unwrap to ignore failed updates
+            // Use optional unwrap to ignore failed updates
             if let game = try? await self.gameService.loadGame(forPlayerToken: self.playerToken) {
                 self.game = game
             }
+        }
+    }
+}
+
+extension Game.State {
+    fileprivate var formattedState: String {
+        switch self {
+            case .awaitingJoin:
+                return "Waiting for opponent to join"
+            case .yourTurn:
+                return "Your turn!"
+            case .theirTurn:
+                return "Opponent's turn"
+            case .youWon:
+                return "Congratulations, you won!"
+            case .theyWon:
+                return "You lost!"
+            case .draw:
+                return "Looks like a draw"
+        }
+    }
+
+    fileprivate var isGameOver: Bool {
+        switch self {
+            case .awaitingJoin, .yourTurn, .theirTurn:
+                return false
+            case .youWon, .theyWon, .draw:
+                return true
+        }
+    }
+
+    fileprivate var associatedColor: Color {
+        switch self {
+            case .youWon:
+                return .green
+            case .theyWon:
+                return .red
+            default:
+                return .accentColor
         }
     }
 }
