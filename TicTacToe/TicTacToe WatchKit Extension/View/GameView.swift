@@ -11,7 +11,21 @@ struct GameView: View {
     @StateObject internal var viewModel: GameViewModel
 
     var body: some View {
-        Text(self.viewModel.game.name)
+        Text(self.viewModel.name)
+        Grid(alignment: .center, horizontalSpacing: 0.0, verticalSpacing: 0.0) {
+            ForEach(0...2, id: \.self) { row in
+                GridRow {
+                    ForEach(0...2, id: \.self) { column in
+                        let buttonIndex = column + row*3
+                        Button(self.viewModel.boardValues[buttonIndex]) {
+                            self.viewModel.makeMove(atIndex: buttonIndex)
+                        }
+                        .disabled(!self.viewModel.isButtonEnabled(forIndex: buttonIndex))
+                    }
+                }
+            }
+        }
+        Text(self.viewModel.gameState)
     }
 }
 
@@ -20,12 +34,16 @@ struct GameView_Previews: PreviewProvider {
         GameView(
             viewModel: .init(
                 game: .init(
-                    name: "",
-                    state: "",
-                    board: [],
-                    playerToken: "",
-                    playerRole: "",
-                    nextMoveToken: ""
+                    name: "Game name",
+                    state: "your_turn",
+                    board: [
+                        "f", "f", "f",
+                        "f", "f", "f",
+                        "f", "f", "f",
+                    ],
+                    playerToken: "playerToken",
+                    playerRole: "X",
+                    nextMoveToken: "nextMoveToken"
                 )
             )
         )
