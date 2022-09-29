@@ -10,6 +10,7 @@ import Foundation
 
 internal class GameService {
     private static var host: String = "https://tik-tak-tioki.fly.dev"
+
     private static func getURLRequest(
         forEndpoint endpoint: String,
         withHttpMethod httpMethod: String,
@@ -27,7 +28,8 @@ internal class GameService {
     }
 
     internal func startNewGame() async throws -> Game {
-        let urlRequest = Self.getURLRequest(forEndpoint: "game", withHttpMethod: "POST")
+        var urlRequest = Self.getURLRequest(forEndpoint: "game", withHttpMethod: "POST")
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         let (data, _) = try await URLSession.shared.data(for: urlRequest)
         let game = try JSONDecoder.snakeCaseDecoder.decode(Game.self, from: data)
 
@@ -44,6 +46,7 @@ internal class GameService {
 
     internal func joinGame(named name: String) async throws -> Game {
         var urlRequest = Self.getURLRequest(forEndpoint: "join", withHttpMethod: "POST")
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         let joinRequest = JoinRequest(name: name)
         urlRequest.httpBody = try JSONEncoder.snakeCaseEncoder.encode(joinRequest)
 
@@ -75,6 +78,7 @@ internal class GameService {
                 .init(name: "player_token", value: playerToken)
             ]
         )
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.httpBody = try JSONEncoder.snakeCaseEncoder.encode(nextMove)
 
         let (data, _) = try await URLSession.shared.data(for: urlRequest)

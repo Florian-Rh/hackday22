@@ -9,7 +9,7 @@ import Foundation
 
 @MainActor internal class GameViewModel: ObservableObject {
     private let gameService = GameService()
-    private let game: Game
+    internal let game: Game
 
     internal init(game: Game) {
         self.game = game

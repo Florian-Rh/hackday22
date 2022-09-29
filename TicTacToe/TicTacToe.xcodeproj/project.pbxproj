@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		BE14A59D28E444F4009F6957 /* TicTacToe WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = BE14A59C28E444F4009F6957 /* TicTacToe WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BE14A5A228E444FB009F6957 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE14A5A128E444FB009F6957 /* Assets.xcassets */; };
-		BE14A5A828E444FB009F6957 /* TicTacToe WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BE14A5A728E444FB009F6957 /* TicTacToe WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BE14A5AF28E444FB009F6957 /* TicTacToeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE14A5AE28E444FB009F6957 /* TicTacToeApp.swift */; };
 		BE14A5B328E444FC009F6957 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE14A5B228E444FC009F6957 /* Assets.xcassets */; };
 		BE14A5B628E444FC009F6957 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE14A5B528E444FC009F6957 /* Preview Assets.xcassets */; };
@@ -32,27 +31,9 @@
 			remoteGlobalIDString = BE14A59B28E444F4009F6957;
 			remoteInfo = "TicTacToe WatchKit App";
 		};
-		BE14A5A928E444FB009F6957 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BE14A59228E444F4009F6957 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BE14A5A628E444FB009F6957;
-			remoteInfo = "TicTacToe WatchKit Extension";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		BE14A5BD28E444FC009F6957 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				BE14A5A828E444FB009F6957 /* TicTacToe WatchKit Extension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BE14A5C128E444FC009F6957 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -70,7 +51,6 @@
 		BE14A59828E444F4009F6957 /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE14A59C28E444F4009F6957 /* TicTacToe WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TicTacToe WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE14A5A128E444FB009F6957 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BE14A5A728E444FB009F6957 /* TicTacToe WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "TicTacToe WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE14A5AE28E444FB009F6957 /* TicTacToeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeApp.swift; sourceTree = "<group>"; };
 		BE14A5B228E444FC009F6957 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE14A5B528E444FC009F6957 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -111,7 +91,6 @@
 			children = (
 				BE14A59828E444F4009F6957 /* TicTacToe.app */,
 				BE14A59C28E444F4009F6957 /* TicTacToe WatchKit App.app */,
-				BE14A5A728E444FB009F6957 /* TicTacToe WatchKit Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -201,34 +180,17 @@
 			buildConfigurationList = BE14A5BE28E444FC009F6957 /* Build configuration list for PBXNativeTarget "TicTacToe WatchKit App" */;
 			buildPhases = (
 				BE14A59A28E444F4009F6957 /* Resources */,
-				BE14A5BD28E444FC009F6957 /* Embed App Extensions */,
+				BE14A5A328E444FB009F6957 /* Sources */,
+				BE14A5A428E444FB009F6957 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				BE14A5AA28E444FB009F6957 /* PBXTargetDependency */,
 			);
 			name = "TicTacToe WatchKit App";
 			productName = "TicTacToe WatchKit App";
 			productReference = BE14A59C28E444F4009F6957 /* TicTacToe WatchKit App.app */;
-			productType = "com.apple.product-type.application.watchapp2";
-		};
-		BE14A5A628E444FB009F6957 /* TicTacToe WatchKit Extension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BE14A5BA28E444FC009F6957 /* Build configuration list for PBXNativeTarget "TicTacToe WatchKit Extension" */;
-			buildPhases = (
-				BE14A5A328E444FB009F6957 /* Sources */,
-				BE14A5A428E444FB009F6957 /* Frameworks */,
-				BE14A5A528E444FB009F6957 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "TicTacToe WatchKit Extension";
-			productName = "TicTacToe WatchKit Extension";
-			productReference = BE14A5A728E444FB009F6957 /* TicTacToe WatchKit Extension.appex */;
-			productType = "com.apple.product-type.watchkit2-extension";
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -238,15 +200,12 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1340;
+				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					BE14A59728E444F4009F6957 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
 					BE14A59B28E444F4009F6957 = {
-						CreatedOnToolsVersion = 13.4.1;
-					};
-					BE14A5A628E444FB009F6957 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
 				};
@@ -266,7 +225,6 @@
 			targets = (
 				BE14A59728E444F4009F6957 /* TicTacToe */,
 				BE14A59B28E444F4009F6957 /* TicTacToe WatchKit App */,
-				BE14A5A628E444FB009F6957 /* TicTacToe WatchKit Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -283,16 +241,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE14A5A228E444FB009F6957 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BE14A5A528E444FB009F6957 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 				BE14A5B628E444FC009F6957 /* Preview Assets.xcassets in Resources */,
 				BE14A5B328E444FC009F6957 /* Assets.xcassets in Resources */,
+				BE14A5A228E444FB009F6957 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,11 +274,6 @@
 			isa = PBXTargetDependency;
 			target = BE14A59B28E444F4009F6957 /* TicTacToe WatchKit App */;
 			targetProxy = BE14A59E28E444F4009F6957 /* PBXContainerItemProxy */;
-		};
-		BE14A5AA28E444FB009F6957 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BE14A5A628E444FB009F6957 /* TicTacToe WatchKit Extension */;
-			targetProxy = BE14A5A928E444FB009F6957 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -444,83 +390,26 @@
 			};
 			name = Release;
 		};
-		BE14A5BB28E444FC009F6957 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TicTacToe WatchKit Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = 63NZMDFF7Z;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "TicTacToe WatchKit Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "TicTacToe WatchKit Extension";
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_WKWatchOnly = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.rhein.TicTacToe.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Debug;
-		};
-		BE14A5BC28E444FC009F6957 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TicTacToe WatchKit Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = 63NZMDFF7Z;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "TicTacToe WatchKit Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "TicTacToe WatchKit Extension";
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_WKWatchOnly = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.rhein.TicTacToe.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Release;
-		};
 		BE14A5BF28E444FC009F6957 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 63NZMDFF7Z;
 				GENERATE_INFOPLIST_FILE = YES;
-				IBSC_MODULE = TicTacToe_WatchKit_Extension;
 				INFOPLIST_KEY_CFBundleDisplayName = "TicTacToe WatchKit App";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.rhein.TicTacToe.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -538,14 +427,21 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 63NZMDFF7Z;
 				GENERATE_INFOPLIST_FILE = YES;
-				IBSC_MODULE = TicTacToe_WatchKit_Extension;
 				INFOPLIST_KEY_CFBundleDisplayName = "TicTacToe WatchKit App";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.rhein.TicTacToe.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -594,15 +490,6 @@
 			buildConfigurations = (
 				BE14A5B828E444FC009F6957 /* Debug */,
 				BE14A5B928E444FC009F6957 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BE14A5BA28E444FC009F6957 /* Build configuration list for PBXNativeTarget "TicTacToe WatchKit Extension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BE14A5BB28E444FC009F6957 /* Debug */,
-				BE14A5BC28E444FC009F6957 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

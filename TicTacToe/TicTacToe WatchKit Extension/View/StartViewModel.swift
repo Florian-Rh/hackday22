@@ -37,7 +37,7 @@ import Foundation
                 let game = try await self.gameService.startNewGame()
                 path.append(game)
             } catch let error {
-                print(error)
+                throw error
             }
         }
     }
