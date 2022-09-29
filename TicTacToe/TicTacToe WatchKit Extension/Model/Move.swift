@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 internal struct Move: Codable {
     internal let nextMoveToken: String
     internal let field: Int
